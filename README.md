@@ -1,10 +1,7 @@
-# rodge-homelab
+<img src="2025homelab/rodge.jpg" alt="rodge.jpg" style="width:25%; height:auto"> 
+**Hi, I am Rodge!** Here I will document my journey in developing my very own Ubuntu servers!    The purpose of this project is to develop hands-on experience with servers, Linux, networking, and relevant IT practices.
 
-Hi I am Rodge, here we will go over my journey in developing my very own Ubuntu servers!
-
-The purpose of this project is to develop hands-on experience with servers, Linux, networking, and relevant IT practices.
-
-## To-Do
+## To-Do 📝
 
 - [x]  Get Dell(a) laptop to function
 - [x]  Obtain network access for Lenovo laptop via ethernet adapter
@@ -17,15 +14,35 @@ The purpose of this project is to develop hands-on experience with servers, Linu
 - [ ]  Support containerization with Docker
 - [ ]  Learn virtualization with Proxmox
 
-## Hardware
+## Equipment ⚙️
 
 - della (Primary Server)
+    - **Model:** Inspiron 5567
+    - **Processor:** Intel i7-7500U @ 3.5 GHz
+    - **Storage:** 1 TB
+    - **Memory:** 16 GB
+
+    <img src="2025homelab/dell.png" alt="dell.jpg" style="width:75%; height:auto"> 
+
 - lennie (Secondary Server)
-- switch
+    - **Model:** IdeaPad 1 14IGL7
+    - **Processor:** Intel Celeron N4020 @ 2.8 GHz
+    - **Storage:** 512 GB
+    - **Memory:** 4 GB
 
-## Journey/Timeline
+    <img src="2025homelab/lenovo.png" alt="lenovo.png" style="width:75%; height:auto">
 
-### Day 0: Initial Setup
+- TP-Link TL-SG105 5 Port Desktop Gigabit Switch
+    
+    
+  <img src="2025homelab/switch.png" alt="switch.png" style="width:75%; height:auto">
+    
+
+## Journey/Timeline 📅
+
+### Day 0: Initial Setup 🎬
+
+<img src="2025homelab/laptops.jpg" alt="laptops.jpg" style="width:75%; height:auto">
 
 These were the first steps into establishing my own home servers. After researching for about a week regarding home labbing through Reddit and YouTube, I realized that it is very simple and cheap to actually run a server.
 
@@ -43,19 +60,24 @@ The final device I will need is a network switch to connect all these devices to
 
 With all the equipment ready lets set up the network! 
 
-### Day 1-2: Ubuntu Server Setup and pain
+### Day 1-2: Ubuntu Server Setup and pain 🤕
 
 I was so happy to be able to get everything I needed for only under $20! I was able to also get some CAT6 cables from home and work, an USB for the Ubuntu server OS image, and a ethernet adapter.
 
 I first started on the Dell laptop where I hooked my second monitor to it so that the display would work. I plugged the USB in, went to BIOS and bootup menu but the issue with this is that the monitor would not display the BIOS screen since it would only be displayed on the main screen which was the laptop display itself which was broken. After going through old forums and articles I found that you are able to change main displays with fn + f8 which worked perfectly! So I then started the imaging process. 
 
+
+<img src="2025homelab/dell-broken.jpg" alt="dell-broken.jpg" style="width:50%; height:auto">
+
 This would then start one of the most frustrating moments of my life. So everything seemed to boot up fine at first with everything loading and getting to the language setup menu, went through the basic configurations and then I hit a major roadblock. The server setup will try to discover disks on the laptop, do this for 5 minutes, and hit me with "Block probing did not discover any disks”. I was not sure on why that occurred so I went through forums. Some common ways to fix the issue was to ensure secure boot was OFF, turn RAID mode to AHCI, use legacy boot mode, use an older Ubuntu server OS version, and initialize pre-boot commands. All of these did not work but the pre-boot almost did. It would get me past the block probing error but then it would crash after formatting the drives.
+
+<img src="2025homelab/block-probe.png" alt="block-probe.png" style="width:75%; height:auto">
 
 I went through this entire troubleshooting process for hours. I spent an entire day trying to figure out why this block probing error kept occurring even until 2AM. I went even deeper into old forums. I tried literally everything I can throw at it: commands, settings, older versions, different versions, reinstalling the image 5 times. Nothing would work, none of these forum answers were any help at all.
 
 I just decided to move on to the other laptop. I got the Lenovo and went through the imaging process. Everything went through perfectly. Once the Ubuntu server OS installed, I just had to get network connection. I plugged my ethernet adapter and ethernet cables in and pinged google.com. Nothing happens. Okay so now I am having a network and peripheral device issue with this laptop. I tried plugging and replugging and restarting, no network connection at all. Feeling defeated and frustrated I just gave up for the day for these two devices.
 
-### Day 3: A Breakthrough.
+### Day 3: A Breakthrough. 🚀
 
 Back to the Dell laptop, I was on the verge of giving up the entire project until I decided to one more thing. I had my work USB which contained a Windows 11 installer, with this I wondered if deleting the partitions and wiping the drive would help at all. So with nothing else to do I plugged my work USB instead and deleted all partitions associated with my laptop drive.
 
@@ -63,15 +85,21 @@ Once partitions were deleted, I restarted the laptop and booted to the Ubuntu se
 
 I WAS ECSTATIC. I spent 2 whole days until 2AM trying to get this to work. I felt so proud for being able to troubleshoot something that I was stuck on for days and with no real searchable answer anywhere. I got this old Dell laptop to work on my own! Once it finally booted up, it was ready to be used.
 
+
+<img src="2025homelab/laptops.jpg" alt="dell-login.jpg" style="width:75%; height:auto">
+
 I moved on to the other Lenovo laptop. I brought another ethernet adapter from work just to see if maybe it was a driver compatibility issue. This time I made sure that it was compatible by searching the model and seeing that it was compatible with Linux so now I am sure it will work. I plugged the adapter and pinged [google.com](http://google.com) with no success.
 
 I went through forums and found that I can verify if the interface was UP and if it was properly plugged in. The interface was down and it seemed that I can configure the network settings through netplan. After statically configuring the interface and rebooting, it worked!.
 
 I now have 2 fully functioning Ubuntu servers! 
 
-### Day 4-6: Installing applications and general configurations
+### Day 4-6: Installing applications and general configurations 🥳
 
 Since I am able to get these two servers working I decided to give these two devices names. My primary server, the Dell laptop will be named della to handle main storage and heavy load matters. My secondary server, the lenovo will be named lennie for any additional space or for experimenting before applying to della.
+
+
+<img src="2025homelab/samba.jpg" alt="samba.jpg" style="width:75%; height:auto">
 
 I did some basic network configurations with both servers to have their own static IPs so their IPs are not dynamically set by reserving their IPs through router settings and editing their netplan yaml configuration files.
 
