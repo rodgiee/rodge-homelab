@@ -99,7 +99,7 @@ I now have 2 fully functioning Ubuntu servers!
 Since I am able to get these two servers working I decided to give these two devices names. My primary server, the Dell laptop will be named della to handle main storage and heavy load matters. My secondary server, the lenovo will be named lennie for any additional space or for experimenting before applying to della.
 
 
-<img src="2025homelab/samba.jpg" alt="samba.jpg" style="width:75%; height:auto">
+<img src="2025homelab/samba.jpg" alt="samba.jpg" style="width:50%; height:auto">
 
 I did some basic network configurations with both servers to have their own static IPs so their IPs are not dynamically set by reserving their IPs through router settings and editing their netplan yaml configuration files.
 
