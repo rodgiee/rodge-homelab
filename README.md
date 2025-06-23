@@ -1,5 +1,4 @@
-<img src="2025homelab/rodge.jpg" alt="rodge.jpg" style="width:25%; height:auto"> 
-Hi, I'm Rodge!
+ Hi, I'm Rodge,
 
 Here I will document my journey in developing my very own Ubuntu servers! The purpose of this project is to develop hands-on experience with servers, Linux, networking, and relevant IT practices.
 
